@@ -1,0 +1,513 @@
+<html>
+<head>
+    <!-- Meta tags for the page definition -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>gaming pc shop</title>
+
+    <!-- here starts the style of the page -->
+    <style>
+        /* general style for the page. */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #36393f;
+            color: #dcdcdc;
+        }
+
+        /* style for the header and footer. */
+        header,footer {
+            background-color: #333;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* style for the taskbar. */
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* style for div container. */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* style for the buttons. */
+        button {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* style for the products. */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        
+        /* style for the product. */
+        .product {
+            width: calc(33.33% - 20px);
+            max-width: calc(33.33% - 20px);
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #2c3e50;
+            border-radius: 8px;
+            background-color: #fff;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            gap: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        /* style for the product title. */
+        .product h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        
+        /* style for the product price. */
+        #price {
+            font-size: 15px;
+        }
+
+        /* style for the product discription. */
+        .product p {
+            margin-bottom: 10px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        /* style for the product hr. */
+        .product hr {
+            border-top: 1px solid #2c3e50;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        /* style for the product button. */
+        .product button {
+            right: 15px;
+            bottom: 20px;
+        }
+        
+        /* style for the product image. */
+        .product img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* style for the product hover. */
+        .product:hover {
+            transform: scale(1.02);
+        }
+
+        /* style for the cart container. */
+        .cart-container {
+            display: none;
+            position: fixed;
+            top: 40px;
+            right: 480px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            color: #2c3e50;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-height: 500px;
+            overflow: overlay;
+        }
+        
+        /* style for the items in cart. */
+        ul {
+            font-size: 14px;
+            list-style: none;
+            text-align: left;
+            padding-left: 10;
+        }
+
+        /* style for the close button in cart. */
+        #closeButton {
+            background-color: red;
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container"> <!-- here is the main content of the page with is divided into 3 sections, the header, the products and the footer. -->
+        
+        <!-- header -->
+        <header> <!-- the header contains the title of the website and a button that opens the cart -->
+            <div class="taskbar"> <!-- the div -->
+                <h1>EUGEN'S GAMING SHOP</h1>
+                <button onclick="openCart()">CART</button>
+            </div>
+        </header>
+        <hr>
+        <div class="products"> <!-- here starts the main section. The <div> element contains the main product display area. -->
+            <!-- the <div> devides the products into a grid. Each of the product is represented by a class product. -->
+            <div class="product">
+                <!-- each product consists of an image -->
+                <img src="./images/prozessorI5.jpg">
+                <!-- each product consists of an title -->
+                <h2>Intel Core i5</h2>                  
+                <hr> 
+                <!-- each product consists of an discription -->
+                <p>Intel® Core™ i5-12600HX Processor (18 MB Cache, up to 4,60 GHz)</p> 
+                <hr>
+                 <!-- each product consists of an price -->
+                <p id="price"><b>Price:</b> 221.99€</p>
+                <!-- each product consists of an button to add the product to the cart -->     
+                <button onclick="addCart('Intel Core i5','221.99')"> add to cart</button> 
+            </div>
+
+            <div class="product">
+                <img src="./images/prozessorI7.jpg">
+                <h2>Intel Core i7</h2>
+                <hr>
+                <p>Intel® Core™ i7-13700E Processor (30 MB Cache, up to 5,10 GHz)</p>
+                <hr>
+                <p id="price"><b>Price:</b> 437.99€</p>
+                <button onclick="addCart('Intel Core i7','437.99')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/prozessorI9.jpg">
+                <h2>Intel Core i9</h2>
+                <hr>
+                <p>Intel® Core™ i9-13905H Processor (24 MB Cache, up to 5,40 GHz)</p>
+                <hr>
+                <p id="price"><b>Price:</b> 659.99€</p>
+                <button onclick="addCart('Intel Core i9','659.99')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/prozessorRyzen9.jpg">
+                <h2>AMD Ryzen™ 9</h2>
+                <hr>
+                <p>AMD Ryzen™ 9 Processor (12 MB Cache, up to 5,60 GHz)</p>
+                <hr>
+                <p id="price"><b>Price:</b> 619.00€</p>
+                <button onclick="addCart('AMD Ryzen™ 9','619.00')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/grafikkard4060ti.jpg">
+                <h2>NVIDIA GeForce RTX 4060 Ti</h2>
+                <hr>
+                <p>NVIDIA GeForce RTX 4060 Ti (Boost-Taktspeed: 2.54 GHz, 8 GB GPU performance)</p>
+                <hr>
+                <p id="price"><b>Price:</b> 450.00€</p>
+                <button onclick="addCart('NVIDIA GeForce RTX 4060 Ti','450.00')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/grafikkard4070ti.jpg">
+                <h2>NVIDIA GeForce RTX 4070 Ti</h2>
+                <hr>
+                <p>ASUS ProArt -RTX4070TI-12G with DLSS 3 (Boost-Taktspeed: 2.61 GHz, 12 GB GPU performance)</p>
+                <hr>
+                <p id="price"><b>Price:</b> 950.00€</p>
+                <button onclick="addCart('NVIDIA GeForce RTX 4070 Ti','950.00')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/grafikkard4080.jpg">
+                <h2>NVIDIA GeForce RTX 4080</h2>
+                <hr>
+                <p>NVIDIA GeForce RTX 4080 (Boost-Taktspeed: 2.51 GHz, 16 GB GPU performance)</p>
+                <hr>
+                <p id="price"><b>Price:</b> 1329.00€</p>
+                <button onclick="addCart('NVIDIA GeForce RTX 4080','1329.00')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/grafikkard4090.jpg">
+                <h2>NVIDIA GeForce RTX 4090</h2>
+                <hr>
+                <p>NVIDIA GeForce RTX 4090 (Boost-Taktspeed: 2.52 GHz, 24 GB GPU performance)</p>
+                <hr>
+                <p id="price"><b>Price:</b> 1799.00€</p>
+                <button onclick="addCart('NVIDIA GeForce RTX 4090','1799.00')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/grafikkard6500.jpg">
+                <h2>AMD Radeon™ RX 6500 XT</h2>
+                <hr>
+                <p>AMD Radeon™ RX 6500 XT (Boost-Taktspeed: 2.22 GHz, 8 GB GPU performance)</p>
+                <hr>
+                <p id="price"><b>Price:</b> 450.00€</p>
+                <button onclick="addCart('AMD Radeon™ RX 6500 XT','450.00')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/grafikkard6800.jpg">
+                <h2>AMD Radeon™ RX 7800 XT</h2>
+                <hr>
+                <p>AMD Radeon™ RX 7800 XT (Boost-Taktspeed: 2.12 GHz, 16 GB GPU performance)</p>
+                <hr>
+                <p id="price"><b>Price:</b> 940.00€</p>
+                <button onclick="addCart('AMD Radeon™ RX 7800 XT','940.00')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/motherboardAsus.jpg">
+                <h2>ASUS ROG MAXIMUS Z790 APEX ENCORE</h2>
+                <hr>
+                <p>Intel Z790 ATX motherboard, DDR5 support, Wi-Fi 7, PCIe 5.0, AI features, Aura Sync RGB.</p>
+                <hr>
+                <p id="price"><b>Price:</b> 189.00€</p>
+                <button onclick="addCart('ASUS ROG MAXIMUS Z790 APEX ENCORE','189.00')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/motherboardMSI.jpg">
+                <h2>MSI Z790 GAMING WIFI</h2>
+                <hr>
+                <p>MSI Z790 GAMING WIFI motherboard, DDR5 support, Wi-Fi 7, PCIe 5.0, AI features, Aura Sync RGB.</p>
+                <hr>
+                <p id="price"><b>Price:</b> 260.00€</p>
+                <button onclick="addCart('MSI Z790 GAMING WIFI','260.00')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/corsairPowerSupply1000.jpg">
+                <h2>CORSAIR RMe Series RM1000e</h2>
+                <hr>
+                <p>Fully modular, quiet ATX power supply (1000W).</p>
+                <hr>
+                <p id="price"><b>Price:</b> 199.99€</p>
+                <button onclick="addCart('CORSAIR RMe Series RM1000e','199.99')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/corsairPowerSupply750.jpg">
+                <h2>CORSAIR RMe Series RM750e</h2>
+                <hr>
+                <p>Fully modular, quiet ATX power supply (750W).</p>
+                <hr>
+                <p id="price"><b>Price:</b> 159.99€</p>
+                <button onclick="addCart('CORSAIR RMe Series RM750e','159.99')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/2TBssd.jpg">
+                <h2>SAMSUNG 970 EVO Plus NVMe™</h2>
+                <hr>
+                <p> M.2 SSD - 2 TB, High data transfer speeds of up to 3,500 MB/s.</p>
+                <hr>
+                <p id="price"><b>Price:</b> 149.99€</p>
+                <button onclick="addCart('SAMSUNG 970 EVO Plus NVMe™','149.99')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/4TBssd.jpg">
+                <h2>SAMSUNG 990 PRO NVMe™</h2>
+                <hr>
+                <p>M.2 SSD - 4 TB, High data transfer speeds of up to 6.900 MB/s.</p>
+                <hr>
+                <p id="price"><b>Price:</b> 339.90€</p>
+                <button onclick="addCart('SAMSUNG 990 PRO NVMe™','339.90')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/gamingCase.jpg">
+                <h2>EMPIRE GAMING - Diamond PC case</h2>
+                <hr>
+                <p>ARGB Mid-Tower ATX Case, Diamond Plexiglass Front and Tempered Glass Side Panel, 4 Fans 5V LED RGB Addressable 120mm.</p>  
+                <hr>
+                <p id="price"><b>Price:</b> 79.99€</p>
+                <button onclick="addCart('EMPIRE GAMING - Diamond PC case','79.99')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/gamingCasePremium.jpg">
+                <h2>ASUS TUF Gaming GT502 Case</h2>
+                <hr>
+                <p>White Edition (tempered glass, dual-chamber case, panoramic view, front panel with high-speed USB Type-C, tool-free side panels, white).</p>
+                <hr>
+                <p id="price"><b>Price:</b> 179.99€</p>
+                <button onclick="addCart('ASUS TUF Gaming GT502 Case','179.99')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/RAM.jpg">
+                <h2>Kingston FURY Beast RAM</h2>
+                <hr>
+                <p>DDR5 32GB (2x16GB) 6000MT/s DDR5 CL36 DIMM Desktop Gaming Memory Kit with 2 - KF560C36BBEK2-32.</p>
+                <hr>
+                <p id="price"><b>Price:</b> 75.99€</p>
+                <button onclick="addCart('Kingston FURY Beast RAM','75.99')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/RAMCorsair.jpg">
+                <h2>Corsair Vengeance RGB PRO RAM</h2>
+                <hr>
+                <p>32GB (2x16GB) DDR4 3600 (PC4-28800) C18 Desktop Memory, black.</p>
+                <hr>
+                <p id="price"><b>Price:</b> 108.99€</p>
+                <button onclick="addCart('Corsair Vengeance RGB PRO RAM','108.99')"> add to cart</button>
+            </div>
+
+            <div class="product">
+                <img src="./images/RAMCorsair2.jpg">
+                <h2>CORSAIR Vengeance RAM</h2>
+                <hr>
+                <p>32GB (2x16GB) DDR5 6000MHz CL30 AMD Expo iCUE Desktop Memory, grey.</p>
+                <hr>
+                <p id="price"><b>Price:</b> 127.00€</p>
+                <button onclick="addCart('CORSAIR Vengeance RAM','127.00')"> add to cart</button>
+            </div>
+        </div>
+
+        <!-- 
+            The div cart container is the popup that appears when the cart button is clicked. 
+            It contains elements that display the total number of items in the shopping cart, 
+            the list of items in the shopping cart, the total cost of the items in the shopping cart, 
+            a checkout button, and an empty cart button.
+         -->
+
+        <div class="cart-container" id="cartContainer">
+            <button id="closeButton" onclick="closeCart()">X</button>
+            <br>
+            <h2>PRODUKT CART</h2>
+            <hr>
+            <p id="itemCount"><b>Total items in the Cart:</b> 0</p>
+            <hr>
+            <ul id="items"></ul>
+            <hr>
+            <p id="total"><b>Total:</b> 0€</p>
+            <hr>
+            <button style="background-color: darkgreen;" onclick="checkout()">PROCEED TO CHECKOUT</button>
+            <p id="checkoutError"></p>
+            <button style="background-color: darkred;" onclick="clearCart()">CLEAR THE CART</button>
+        </div>
+
+        <hr>
+
+        <footer> <!-- the footer contains a copyright notice. -->
+            <p>&copy; 2023 Eugen Fischer onlineshop</p>
+        </footer>
+    </div> 
+
+    <script> // here is where the Javascript code starts.
+
+        var items = []; // sets the "items" array to an empty array. This array will be used to store the items in the cart.
+        var total = 0; // sets the value of the variable "total" to zero. This variable will be used to calculate the total costs of items in the cart.
+        var cartQuantity = 0; // sets the value of the variable "cartQuantity" to zero. This variable will be used to calculate the total items in the cart.
+        
+        var cartContainer = document.getElementById("cartContainer");  // creates a variable that represents the ID cartContainer.
+
+        // the function to display the cart.
+        function openCart() { 
+            cartContainer.style.display = "block";
+        }
+
+        /* the openCart function is used to show the cart. It sets the display property of the cart container to "block", making it visible.*/
+        
+        // the function to hide the cart.
+        function closeCart() {   
+            cartContainer.style.display = "none";
+        }
+        
+        /* the closeCart function is used to hide the cart. It sets the display property of the cart container to "none", making it invisible.*/
+
+        // function to add the product to the cart.
+        function addCart(product, price) { 
+            items.push({ product: product, price: price, quantity: 1 });
+            total += parseFloat(price);
+            updateTheCart();
+            openCart();
+        }
+
+        /* the function adds the products to the array. 
+        For this, the values with the product name and the product price are taken when a user presses the "Add to Cart" button for the respective product. 
+        Then the properties are added to the items array with "push". The total value of the variable will then be increased by the amount of the product price. 
+        For the addition to work correctly, the price is converted into a decimal number with “float”. 
+        This is necessary to ensure that the mathematical operation is performed correctly and that the total amount correctly reflects all the prices of the products in the cart. 
+        The cart will then be updated with the "updateTheCart()" function and the shopping cart will be displayed with the "openCart()" function.*/
+        
+        // function to update the cart.
+        function updateTheCart() { 
+            document.getElementById("checkoutError").innerHTML = ""; //this removes the error or no items in cart message.
+            var itemCounter = document.getElementById("itemCount");
+            var cartItems = document.getElementById("items");
+            var totalCost = document.getElementById("total");
+            cartItems.innerHTML = "";
+
+            items.forEach(item => {
+                cartItems.innerHTML += "<li><b>" + item.product + ":</b></li><li> " + item.price + " €</li><br>";
+            });
+            itemCounter.innerHTML = "<b>Total items in the Cart: </b>" + calculateTotalItems();
+            totalCost.innerHTML = "<b>Total: </b>" + Math.round(total * 100) / 100 + " €";
+        }
+
+        /* the function  updates the shopping cart after an item has been added or removed. 
+        First, I created variables that reference the HTML elements where everything is supposed to appear. 
+        The function loops then through the “items” array and adds for each item in the list a formatted string to display products and prices. 
+        It also updates the number of items in the cart and the rounded total costs*/
+
+        // function to calculate the total items in the cart.
+       function calculateTotalItems() { 
+            var itemsInTotal = 0;
+            items.forEach(item => {
+                itemsInTotal += item.quantity;
+            });
+            return itemsInTotal;
+        }
+
+        /* the function calculateTotalItems is used to calculate the total items in the cart. 
+        It goes with a loop trough the items array and adds +1 for each product in the shopping cart.*/
+
+        // function for the checkout button.
+        function checkout() { 
+            if (items.length == 0) {
+                document.getElementById("checkoutError").innerHTML = "No Items in Cart";
+            } else {
+                document.getElementById("checkoutError").innerHTML = "Error you can't choose the payment method";
+            }
+        }
+        
+        /* the function checkout is used to check out the cart. It checks if there are items in the cart. 
+        If there are no items in the cart, it displays an error message.*/
+
+    
+        // function to clear the cart.
+        function clearCart() { 
+            total = 0;
+            items = [];
+            document.getElementById("checkoutError").innerHTML = "";
+            updateTheCart();
+        }
+
+        /* The clearCart function is used to delete the products from the shopping cart. 
+        It therefore sets the total to zero. It sets the items array to an empty array. And it deletes the checkout message. At the end, the shopping cart will be updated again.*/
+
+    </script>
+</body>
+</html>
