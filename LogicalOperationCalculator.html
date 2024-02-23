@@ -2,7 +2,9 @@
 <html>
 
 <head>
-    <meta charset='utf-8'>
+    <!-- The "<meta charset="UTF-8">" meta tag ensures that the text display of the page is suitable for different languages -->
+    <meta charset='utf-8'> 
+
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Logical Operations</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -30,6 +32,7 @@
         <!-- the button that triggers the calculation -->
         <div>
             <button onclick="calculateButton()">Calculate</button>
+            <!-- the button with the "onclick" attribute executes the JavaScript function "calculateButton()" to perform the calculations. -->
         </div>
         <!-- the container where the results are shown -->
         <div id="resultContainer">
@@ -51,46 +54,56 @@
         // the function to calculate the negation
         function NOT(a) {
             return !a;
+            //The function negates the input value “a” and returns the result.
         }
 
         // the function to calculate the AND operator
         function AND(a, b) {
             return a && b;
+            //The function calculates the logical AND of "a" and "b" and returns the result.
         }
 
         // the function to calculate the OR operator
         function OR(a, b) {
             return a || b;
+            //The function calculates the logical OR of "a" and "b" and returns the result.
         }
 
         // the function to calculate the XOR operator
         function XOR(a, b) {
             return !(a && b) && (a || b);
+            //The function calculates the exclusive OR of "a" and "b" and returns the result.
         }
 
         // the function to calculate the NAND operator
         function NAND(a, b) {
             return !(a && b);
+            //The function calculates the negation of the logical AND of "a" and "b" and returns the result.
         }
 
         // the function to calculate the NOR operator
         function NOR(a, b) {
             return !(a || b);
+            //The function calculates the negation of the logical OR of "a" and "b" and returns the result.
         }
 
         // the function to calculate the XNOR operator
         function XNOR(a, b) {
             return (!a && !b) || (a && b);
+            //The function calculates the exclusive NOR of "a" and "b" and returns the result.
         }
 
         // the function to generate a truth table for all operators
         function generateTruthTable(operator) {
-
+            //Initialization of the truth table with the table header
             var truthTable = "<table border='1px'><tr><th>A</th><th>B</th><th>Result</th></tr>";
 
+            //looping through all possible combinations of input values for A and B
             for (var i = 0; i <= 1; i++) {
                 for (var j = 0; j <= 1; j++) {
                     var result;
+
+                    //Determination of the result based on the operator
                     if (operator === "notA") {
                         result = NOT(i);
                     }
@@ -136,6 +149,7 @@
 
         // the fuction that runs when we click on the calculate button
         function calculateButton() {
+            //get the values of inputA and inputB
             var inputA = document.getElementById('inputA').checked;
             var inputB = document.getElementById('inputB').checked;
 
