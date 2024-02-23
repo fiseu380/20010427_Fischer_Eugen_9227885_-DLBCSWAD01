@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Logical Operations</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- the title of the page -->
+        <h1>Logical Operator Calculator</h1>
+        <!-- the checkbox for input A -->
+        <div>
+            <label for="inputA">Input A:</label>
+            <input type="checkbox" id="inputA">
+        </div>
+        <!-- the checkbox for input B -->
+        <div>
+            <label for="inputB">Input B:</label>
+            <input type="checkbox" id="inputB">
+        </div>
+
+        <br>
+        <!-- the button that triggers the calculation -->
+        <div>
+            <button onclick="calculateButton()">Calculate</button>
+        </div>
+        <!-- the container where the results are shown -->
+        <div id="resultContainer">
+            <!--  the paragraphs that are filled with the result when the calculate button is pressed -->
+            <p id="notA"></p>
+            <p id="notB"></p>
+            <p id="and"></p>
+            <p id="or"></p>
+            <p id="xor"></p>
+            <p id="nand"></p>
+            <p id="nor"></p>
+            <p id="xnor"></p>
+        </div>
+
+    </div>
+
+    <script>
+
+        // the function to calculate the negation
+        function NOT(a) {
+            return !a;
+        }
+
+        // the function to calculate the AND operator
+        function AND(a, b) {
+            return a && b;
+        }
+
+        // the function to calculate the OR operator
+        function OR(a, b) {
+            return a || b;
+        }
+
+        // the function to calculate the XOR operator
+        function XOR(a, b) {
+            return !(a && b) && (a || b);
+        }
+
+        // the function to calculate the NAND operator
+        function NAND(a, b) {
+            return !(a && b);
+        }
+
+        // the function to calculate the NOR operator
+        function NOR(a, b) {
+            return !(a || b);
+        }
+
+        // the function to calculate the XNOR operator
+        function XNOR(a, b) {
+            return (!a && !b) || (a && b);
+        }
+
+        // the function to generate a truth table for all operators
+        function generateTruthTable(operator) {
+
+            var truthTable = "<table border='1px'><tr><th>A</th><th>B</th><th>Result</th></tr>";
+
+            for (var i = 0; i <= 1; i++) {
+                for (var j = 0; j <= 1; j++) {
+                    var result;
+                    if (operator === "notA") {
+                        result = NOT(i);
+                    }
+                    else if (operator === "notB") {
+                        result = NOT(j);
+                    }
+                    else if (operator === "and") {
+                        result = AND(i, j);
+                    }
+                    else if (operator === "or") {
+                        result = OR(i, j);
+                    }
+                    else if (operator === "xor") {
+                        result = XOR(i, j);
+                    }
+                    else if (operator === "nand") {
+                        result = NAND(i, j);
+                    }
+                    else if (operator === "nor") {
+                        result = NOR(i, j);
+                    }
+                    else if (operator === "xnor") {
+                        result = XNOR(i, j);
+                    }
+
+                    var value;
+
+                    // converts the result to 1 or 0
+                    if (result) {
+                        value = 1;
+                    }
+                    else {
+                        value = 0;
+                    }
+                    //the row of the truth table
+                    truthTable += "<tr><td>" + i + "</td><td>" + j + "</td><td>" + value + "</td></tr>";
+                }
+            }
+            // the end of the truth table
+            truthTable += "</table>";
+            return truthTable;
+        }
+
+        // the fuction that runs when we click on the calculate button
+        function calculateButton() {
+            var inputA = document.getElementById('inputA').checked;
+            var inputB = document.getElementById('inputB').checked;
+
+            // shows all the logical operations and the truth tables
+            document.getElementById("notA").innerHTML = "<h2>Negation A: </h2> Result: " + NOT(inputA) + "<br><br>" + generateTruthTable("notA");
+            document.getElementById("notB").innerHTML = "<h2>Negation B: </h2> Result: " + NOT(inputB) + "<br><br>" + generateTruthTable("notB");
+            document.getElementById("and").innerHTML = "<h2>AND: </h2> Result: " + AND(inputA, inputB) + "<br><br>" + generateTruthTable("and");
+            document.getElementById("or").innerHTML = "<h2>OR: </h2> Result: " + OR(inputA, inputB) + "<br><br>" + generateTruthTable("or");
+            document.getElementById("xor").innerHTML = "<h2>XOR: </h2> Result: " + XOR(inputA, inputB) + "<br><br>" + generateTruthTable("xor");
+            document.getElementById("nand").innerHTML = "<h2>NAND: </h2> Result: " + NAND(inputA, inputB) + "<br><br>" + generateTruthTable("nand");
+            document.getElementById("nor").innerHTML = "<h2>NOR: </h2> Result: " + NOR(inputA, inputB) + "<br><br>" + generateTruthTable("nor");
+            document.getElementById("xnor").innerHTML = "<h2>XNOR: </h2> Result: " + XNOR(inputA, inputB) + "<br><br>" + generateTruthTable("xnor");
+        }
+
+    </script>
+</body>
+
+</html>
